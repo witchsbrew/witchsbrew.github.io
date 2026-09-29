@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Witch's Brew — Discover Your Potion</title>
+  <meta name="description" content="Witch's Brew is een bruisend, fruitig en suikerarm frisdrankconcept met een magische gamingwereld, drie smaken en een EXP-community."/>
+  <style>
+    :root{
+      --bg:#0d0b12;
+      --panel:#15121b;
+      --panel2:#1d1723;
+      --text:#f7efe2;
+      --muted:#c4b9ad;
+      --gold:#e9ba73;
+      --gold2:#a97639;
+      --pink:#ff53bd;
+      --red:#ef4d5e;
+      --purple:#a25bff;
+      --blue:#59c8ff;
+      --green:#77d36c;
+      --line:rgba(233,186,115,.38);
+      --softline:rgba(255,255,255,.08);
+      --shadow:0 20px 70px rgba(0,0,0,.38);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(157,60,151,.20), transparent 35rem),
+        radial-gradient(circle at 90% 15%, rgba(74,44,145,.18), transparent 28rem),
+        linear-gradient(180deg,#0a0810,#100c15 45%,#0a0910);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{width:min(1460px,calc(100% - 42px));margin:auto}
+
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter:blur(16px);
+      background:rgba(9,8,13,.88);
+      border-bottom:1px solid rgba(233,186,115,.26);
+    }
+    .topbar .inner{
+      min-height:70px;display:flex;align-items:center;gap:30px;
+    }
+    .brand{
+      min-width:max-content;
+      font:700 1.45rem/1 Georgia,serif;
+      letter-spacing:.04em;text-decoration:none;color:#f3cf94;
+    }
+    .brand::before{content:"✦";margin-right:10px;color:var(--gold)}
+    nav{margin-left:auto}
+    nav ul{display:flex;gap:28px;list-style:none;padding:0;margin:0}
+    nav a{
+      font-family:Georgia,serif;
+      text-decoration:none;font-size:.92rem;letter-spacing:.025em;
+      color:#eadfce;position:relative;padding:25px 0;
+    }
+    nav a.active::after,nav a:hover::after{
+      content:"";position:absolute;left:0;right:0;bottom:14px;height:2px;
+      background:linear-gradient(90deg,transparent,var(--pink),transparent);
+      box-shadow:0 0 12px var(--pink);
+    }
+    .profile-chip{
+      display:flex;align-items:center;gap:10px;padding-left:16px;border-left:1px solid var(--softline);
+    }
+    .avatar{
+      width:40px;height:40px;border-radius:50%;
+      display:grid;place-items:center;font-weight:800;
+      border:1px solid var(--gold);
+      background:
+        radial-gradient(circle at 50% 35%,#f2c0d8 0 19%,transparent 20%),
+        radial-gradient(circle at 50% 72%,#5a244e 0 32%,transparent 33%),
+        linear-gradient(145deg,#f060b9,#6c2d79);
+      box-shadow:0 0 18px rgba(255,83,189,.22);
+    }
+    .profile-chip strong{display:block;font:600 .92rem Georgia,serif}
+    .profile-chip small{color:var(--gold);font-size:.74rem}
+
+    .hero{
+      min-height:590px;
+      position:relative;overflow:hidden;
+      border-bottom:1px solid rgba(233,186,115,.18);
+      background:
+        linear-gradient(90deg,rgba(8,7,12,.98) 0%,rgba(11,9,15,.90) 38%,rgba(12,9,17,.30) 70%,rgba(9,7,12,.88) 100%),
+        radial-gradient(circle at 72% 42%,rgba(237,64,149,.30),transparent 20rem),
+        radial-gradient(circle at 86% 20%,rgba(108,71,182,.33),transparent 23rem),
+        linear-gradient(140deg,#1a1121,#2f152b 50%,#111829);
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:
+        repeating-linear-gradient(90deg,transparent 0 110px,rgba(255,255,255,.015) 111px 112px),
+        radial-gradient(circle at 80% 26%,rgba(255,255,255,.92) 0 2px,transparent 3px),
+        radial-gradient(circle at 74% 18%,rgba(255,255,255,.6) 0 1px,transparent 2px),
+        radial-gradient(circle at 91% 38%,rgba(255,255,255,.7) 0 1px,transparent 2px);
+    }
+    .hero .inner{
+      min-height:590px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:2;
+    }
+    .eyebrow{
+      display:flex;align-items:center;gap:10px;
+      text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:#e2bacf;font-weight:800;
+    }
+    .eyebrow::before{content:"☾";color:var(--gold);font-size:1rem}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
+    h1{
+      margin:14px 0 18px;
+      font-size:clamp(3.6rem,7.5vw,7rem);
+      line-height:.92;letter-spacing:-.055em;
+      background:linear-gradient(180deg,#fff6e4 0%,#f5d59f 40%,#f6b8db 85%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      text-shadow:0 7px 35px rgba(255,118,198,.12);
+    }
+    .hero p.lede{max-width:610px;color:#d9ccbf;font-size:1.05rem}
+    .hero-tags{
+      display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 26px;
+    }
+    .tag{
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.035);
+      font-size:.74rem;text-transform:uppercase;letter-spacing:.11em;color:#eadfd5;
+    }
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      text-decoration:none;border:1px solid var(--gold);
+      padding:13px 22px;border-radius:10px;
+      font:700 .9rem Georgia,serif;letter-spacing:.03em;
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      background:rgba(11,9,16,.7);transition:.2s;
+    }
+    .btn.primary{
+      border-color:#ff7bd2;
+      background:linear-gradient(180deg,#bd287c,#8a1d60);
+      box-shadow:0 0 25px rgba(255,83,189,.28),inset 0 0 20px rgba(255,255,255,.05);
+    }
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+
+    .hero-scene{position:relative;min-height:470px}
+    .moon{
+      position:absolute;right:18px;top:15px;width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle at 45% 38%,#fff8dc,#f0d6ef 48%,#c99fe4 75%,#8a64bc);
+      box-shadow:0 0 80px rgba(207,154,255,.42);
+      opacity:.92;
+    }
+    .castle{
+      position:absolute;right:40px;bottom:32px;width:360px;height:220px;
+      background:
+        linear-gradient(90deg,transparent 0 12%,#16101e 12% 19%,transparent 19% 24%,#191122 24% 33%,transparent 33% 39%,#17101f 39% 50%,transparent 50% 58%,#16101f 58% 66%,transparent 66% 76%,#17101f 76% 84%,transparent 84%);
+      clip-path:polygon(0 100%,0 78%,8% 78%,8% 55%,13% 55%,13% 21%,18% 55%,25% 55%,25% 70%,31% 70%,31% 38%,37% 38%,37% 4%,44% 38%,49% 38%,49% 64%,56% 64%,56% 32%,62% 32%,62% 15%,68% 32%,74% 32%,74% 69%,81% 69%,81% 45%,87% 45%,87% 25%,92% 45%,100% 45%,100% 100%);
+      filter:drop-shadow(0 0 16px rgba(0,0,0,.7));
+      opacity:.94;
+    }
+    .witch-illustration{
+      position:absolute;left:10px;bottom:0;width:360px;height:430px;
+    }
+    .hat{
+      position:absolute;left:74px;top:14px;width:230px;height:105px;
+      background:linear-gradient(145deg,#1f1324,#4b1944);
+      border:1px solid rgba(233,186,115,.45);
+      clip-path:polygon(2% 74%,49% 56%,69% 0,80% 55%,100% 75%,63% 87%,30% 89%);
+      transform:rotate(-5deg);
+    }
+    .head{
+      position:absolute;left:125px;top:95px;width:126px;height:148px;border-radius:48% 48% 45% 45%;
+      background:linear-gradient(180deg,#f5d1bc,#e9bca8);
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 0 0 8px rgba(70,23,54,.8),0 0 45px rgba(255,95,178,.18);
+    }
+    .hair{
+      position:absolute;left:89px;top:83px;width:205px;height:235px;border-radius:50%;
+      border:22px solid #8a315e;border-top-width:32px;border-bottom-color:#b43f77;
+      transform:rotate(-7deg);
+    }
+    .face-eye{position:absolute;top:65px;width:13px;height:7px;border-radius:50%;background:#2a1520}
+    .eye1{left:33px}.eye2{right:33px}
+    .smile{position:absolute;left:52px;top:98px;width:25px;height:10px;border-bottom:2px solid #a95a5c;border-radius:50%}
+    .cloak{
+      position:absolute;left:78px;top:225px;width:235px;height:195px;
+      background:linear-gradient(145deg,#201425,#4b1c42);
+      clip-path:polygon(20% 0,72% 0,100% 100%,0 100%);
+      border:1px solid rgba(233,186,115,.22);
+    }
+    .cloak::after{
+      content:"✦  ☾  ✧  ✦";position:absolute;left:55px;top:52px;color:#eab870;letter-spacing:18px;font-size:1.05rem;opacity:.8;
+    }
+    .hero-can{position:absolute;left:295px;bottom:28px;transform:rotate(3deg);z-index:8}
+    .can{
+      width:92px;height:262px;border-radius:15px 15px 12px 12px;position:relative;
+      box-shadow:0 25px 60px rgba(0,0,0,.35);overflow:hidden;border:1px solid rgba(255,255,255,.34);
+    }
+    .can:before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:linear-gradient(#ebe8e1,#9f9d99,#f4f1eb)}
+    .can:after{content:"";position:absolute;left:0;right:0;bottom:0;height:9px;background:linear-gradient(#aaa69f,#f4f1e8)}
+    .can.crimson{background:linear-gradient(145deg,#d33755,#74182f)}
+    .can.love{background:linear-gradient(145deg,#ee76b7,#9c2e71)}
+    .can.midnight{background:linear-gradient(145deg,#7a4db3,#2d1d4f)}
+    .can .inner-label{
+      position:absolute;inset:33px 8px 22px;border:1px solid rgba(255,232,189,.64);
+      border-radius:40px 40px 24px 24px;text-align:center;padding:19px 7px;color:#fff8e8;
+      display:flex;flex-direction:column;align-items:center;
+    }
+    .can .mark{font-size:1.35rem;color:#ffd08c}
+    .can .brand-txt{font:700 .67rem Georgia,serif;letter-spacing:.1em;margin-top:8px}
+    .can .name{font:700 .92rem/1 Georgia,serif;margin-top:38px}
+    .can .micro{font-size:.46rem;margin-top:8px;opacity:.88}
+    .can .sugar{margin-top:auto;font-size:.48rem;letter-spacing:.11em;font-weight:800}
+
+    .section-title{
+      display:flex;align-items:center;gap:15px;margin-bottom:20px;
+      color:#f2d4a4;font:600 1.3rem Georgia,serif;letter-spacing:.03em;
+    }
+    .section-title::before,.section-title::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line))}
+    .section-title::before{max-width:60px}
+    .section-title::after{background:linear-gradient(90deg,var(--line),transparent)}
+    .flavour-zone{padding:28px 0 18px}
+    .flavour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .flavour-card{
+      min-height:245px;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;
+      display:grid;grid-template-columns:.78fr 1.22fr;background:linear-gradient(145deg,#141018,#1a1320);
+      box-shadow:var(--shadow);
+    }
+    .flavour-card .art{position:relative;min-height:245px;overflow:hidden}
+    .flavour-card .art::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 62%,rgba(12,9,15,.9));
+    }
+    .flavour-card.love .art{background:radial-gradient(circle at 40% 38%,#f298c9 0 10%,transparent 11%),radial-gradient(circle at 45% 52%,#b94e87,transparent 22%),linear-gradient(135deg,#5b1d4a,#b3296e)}
+    .flavour-card.crimson .art{background:radial-gradient(circle at 43% 40%,#f28c7d 0 11%,transparent 12%),radial-gradient(circle at 45% 55%,#782330,transparent 23%),linear-gradient(135deg,#451319,#a11f34)}
+    .flavour-card.midnight .art{background:radial-gradient(circle at 43% 40%,#bb90ef 0 10%,transparent 11%),radial-gradient(circle at 45% 55%,#503168,transparent 22%),linear-gradient(135deg,#1f1830,#5a2a79)}
+    .mini-witch{position:absolute;left:20px;bottom:0;width:145px;height:205px}
+    .mini-witch .hat{left:10px;top:8px;width:128px;height:62px}
+    .mini-witch .hair{left:26px;top:51px;width:95px;height:120px;border-width:12px}
+    .mini-witch .head{left:45px;top:55px;width:60px;height:74px}
+    .mini-witch .face-eye{top:31px;width:7px;height:4px}.mini-witch .eye1{left:15px}.mini-witch .eye2{right:15px}.mini-witch .smile{left:24px;top:47px;width:12px;height:6px;border-bottom-width:1px}
+    .mini-witch .cloak{left:25px;top:118px;width:110px;height:95px}
+    .mini-witch .cloak::after{left:22px;top:25px;letter-spacing:6px;font-size:.65rem}
+    .flavour-card .content{padding:22px 22px 18px;position:relative;z-index:3}
+    .class-tag{font-size:.65rem;text-transform:uppercase;letter-spacing:.13em;color:#d6c5b7}
+    .flavour-card h3{margin:6px 0 2px;font-size:2rem}
+    .flavour-card .ing{color:#d1c4b9;font-size:.9rem}
+    .stats{display:grid;gap:7px;margin-top:20px;font-size:.86rem}
+    .stat{display:flex;align-items:center;gap:10px}.stat b{color:#f2d6aa}.dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 12px currentColor}
+    .crimson .dot{background:var(--red)} .midnight .dot{background:var(--purple)}
+    .health-note{margin-top:18px;color:#bfb2a7;font-size:.75rem;border-top:1px solid var(--softline);padding-top:12px}
+
+    .new-banner{
+      margin:26px 0 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+      display:grid;grid-template-columns:.9fr 1.1fr;background:linear-gradient(135deg,#150d12,#321119 50%,#171018);
+      box-shadow:var(--shadow);
+    }
+    .new-banner .copy{padding:28px 34px}
+    .new-banner h2{font-size:3rem;margin:2px 0 6px;background:linear-gradient(180deg,#fff3dc,#f5b3c8);-webkit-background-clip:text;color:transparent}
+    .new-banner p{color:#d6c6ba;max-width:620px}
+    .banner-art{position:relative;min-height:250px;background:
+      radial-gradient(circle at 70% 32%,rgba(239,77,94,.43),transparent 9rem),
+      radial-gradient(circle at 84% 20%,#ec7f8c 0 1px,transparent 2px),
+      linear-gradient(120deg,#2d0e14,#6f1f2d)}
+    .banner-art .moon{width:160px;height:160px;right:42px;top:38px;background:radial-gradient(circle at 45% 38%,#ffd2d3,#f57e89 60%,#8c2035)}
+    .banner-art .castle{width:290px;height:180px;right:20px;bottom:0}
+    .banner-can{position:absolute;left:45px;bottom:20px;transform:scale(.86)}
+
+    .dashboard{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:16px;margin-bottom:42px}
+    .panel{
+      background:linear-gradient(145deg,rgba(23,18,28,.96),rgba(12,10,16,.98));
+      border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)
+    }
+    .panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .panel-head h3{margin:0;color:#e7c38a;font-size:1.1rem}
+    .panel-head a{font-size:.72rem;color:#d9b579;text-decoration:none}
+    .account-row{display:flex;align-items:center;gap:15px}
+    .bigavatar{width:66px;height:66px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;background:linear-gradient(145deg,#f36ac0,#5b2a72);font-size:1.35rem}
+    .account-meta strong{font:600 1.35rem Georgia,serif;display:block}.account-meta span{color:#d8c3b7}
+    .xp{margin-top:15px}
+    .xp-line{display:flex;justify-content:space-between;font-size:.8rem;color:#ddc9ba}
+    .bar{height:10px;border-radius:99px;background:#241c28;border:1px solid rgba(233,186,115,.5);overflow:hidden;margin-top:6px}
+    .bar i{display:block;height:100%;width:42%;background:linear-gradient(90deg,#fb4fc0,#ff84d6);box-shadow:0 0 14px rgba(255,83,189,.45)}
+    .friend{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .friend:last-child{border-bottom:0}
+    .friend .favatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#d39cff,#40508c);border:1px solid rgba(255,255,255,.14)}
+    .friend b{font:600 .98rem Georgia,serif}.friend small{display:block;color:#bcaea3}
+    .rank{font-weight:800;color:var(--gold)}
+    .leader{display:grid;gap:10px}
+    .leader-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center}
+    .leader-row .mini{font-size:.76rem;color:#d4c2b5}.leader-row strong{font:600 .95rem Georgia,serif}
+    .leaderbar{height:6px;border-radius:99px;background:#28212c;overflow:hidden;margin-top:4px}.leaderbar i{display:block;height:100%;background:linear-gradient(90deg,#ffcd7a,#ffeab4)}
+    .leader-row:nth-child(2) .leaderbar i{background:linear-gradient(90deg,#5aa8ff,#8fe2ff)}
+    .leader-row:nth-child(3) .leaderbar i{background:linear-gradient(90deg,#8d50ed,#bd72ff)}
+    .leader-row:nth-child(4) .leaderbar i{background:linear-gradient(90deg,#e744a6,#ff77c9)}
+
+    .mission{
+      margin:26px 0 50px;display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;
+      padding:34px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(140deg,#10131b,#121017);
+    }
+    .mission h2{font-size:2.6rem;margin:0 0 8px}.mission p{color:#c9bbb0}
+    .mission .quote{font:400 2.2rem/1.1 Georgia,serif;color:#f3d298}
+    .disclaimer{font-size:.72rem;color:#8f8379;margin-top:14px}
+    footer{border-top:1px solid rgba(233,186,115,.18);padding:28px 0 40px;color:#9d9187;font-size:.78rem}
+    .foot{display:flex;justify-content:space-between;gap:20px}
+
+    @media(max-width:1100px){
+      .hero .inner{grid-template-columns:1fr}
+      .hero-scene{min-height:430px}
+      .flavour-grid{grid-template-columns:1fr}
+      .dashboard{grid-template-columns:1fr}
+      .new-banner{grid-template-columns:1fr}
+      .mission{grid-template-columns:1fr}
+    }
+    @media(max-width:780px){
+      nav ul{display:none}
+      .profile-chip .txt{display:none}
+      .wrap{width:min(100% - 24px,1460px)}
+      .hero{min-height:auto}
+      .hero .inner{min-height:auto;padding:60px 0}
+      .hero-scene{min-height:380px}
+      .witch-illustration{left:50%;transform:translateX(-58%) scale(.86);transform-origin:bottom}
+      .hero-can{left:58%;transform:translateX(-10%) scale(.9)}
+      .moon{right:2%;width:180px;height:180px}
+      .castle{right:0;width:280px}
+      h1{font-size:clamp(3rem,14vw,5rem)}
+      .flavour-card{grid-template-columns:1fr;min-height:auto}
+      .flavour-card .art{min-height:190px}
+      .new-banner h2{font-size:2.3rem}
+      .banner-art{min-height:220px}
+      .foot{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap inner">
+      <a href="#top" class="brand">WITCH'S BREW</a>
+      <nav aria-label="Hoofdnavigatie">
+        <ul>
+          <li><a href="#top" class="active">HOME</a></li>
+          <li><a href="#flavours">FLAVOURS</a></li>
+          <li><a href="#mission">MISSIE</a></li>
+          <li><a href="#community">COMMUNITY</a></li>
+        </ul>
+      </nav>
+      <div class="profile-chip">
+        <div class="avatar" aria-hidden="true">✦</div>
+        <div class="txt"><strong>Luna</strong><small>Level 12 · 420 EXP</small></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap inner">
+        <div>
+          <div class="eyebrow">Botanical fantasy soft drink</div>
+          <h1>DISCOVER<br>YOUR POTION</h1>
+          <p class="lede">
+            Witch's Brew wordt een bruisende, fruitige en suikerarme frisdranklijn die een bewuster alternatief wil bieden voor klassieke frisdrank — met een wereld die voelt als een game, maar bedoeld is voor alle leeftijden.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">Low sugar als uitgangspunt</span>
+            <span class="tag">Fruitig & zacht</span>
+            <span class="tag">3 signature brews</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#flavours">EXPLORE FLAVOURS →</a>
+            <a class="btn" href="#mission">ONZE MISSIE</a>
+          </div>
+        </div>
+
+        <div class="hero-scene" aria-label="Illustratief concept van een Witch's Brew heks en blikje">
+          <div class="moon"></div>
+          <div class="castle"></div>
+          <div class="witch-illustration">
+            <div class="hat"></div>
+            <div class="hair"></div>
+            <div class="head">
+              <span class="face-eye eye1"></span><span class="face-eye eye2"></span><span class="smile"></span>
+            </div>
+            <div class="cloak"></div>
+          </div>
+          <div class="hero-can">
+            <div class="can love">
+              <div class="inner-label">
+                <div class="mark">♡</div>
+                <div class="brand-txt">WITCH'S BREW</div>
+                <div class="name">LOVE<br>POTION</div>
+                <div class="micro">Aardbei · Framboos</div>
+                <div class="sugar">LOW SUGAR</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flavours" class="flavour-zone">
+      <div class="wrap">
+        <div class="section-title">OUR SIGNATURE FLAVOURS</div>
+
+        <div class="flavour-grid">
+          <article class="flavour-card love">
+            <div class="art">
+              <div class="mini-witch">
+                <div class="hat"></div><div class="hair"></div>
+                <div class="head"><span class="face-eye eye1"></span><span class="face-eye eye2"></span><span class="smile"></span></div>
+                <div class="cloak"></div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="class-tag">The Enchantress</div>
+              <h3>Love Potion</h3>
+              <div class="ing">Aardbei · Framboos</div>
+              <div class="stats">
+                <div class="stat"><span class="dot"></span><b>+2 Charisma</b><span>fris & sociaal</span></div>
+                <div class="stat"><span class="dot"></span><b>+2 Mood</b><span>zacht fruitig</span></div>
+                <div class="stat"><span class="dot"></span><b>+1 Vitality</b><span>lichte sparkling feel</span></div>
+              </div>
+              <div class="health-note">RPG-stats zijn puur merkbeleving, geen gezondheidsclaims.</div>
+            </div>
+          </article>
+
+          <article class="flavour-card crimson">
+            <div class="art">
+              <div class="mini-witch">
+                <div class="hat"></div><div class="hair" style="border-color:#6e1f2a;border-bottom-color:#b6313f"></div>
+                <div class="head"><span class="face-eye eye1"></span><span class="face-eye eye2"></span><span class="smile"></span></div>
+                <div class="cloak" style="background:linear-gradient(145deg,#2a1217,#651c29)"></div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="class-tag">The Blood Mage</div>
+              <h3>Crimson Moon</h3>
+              <div class="ing">Framboos · Hibiscus · Bloedsinaasappel</div>
+              <div class="stats">
+                <div class="stat"><span class="dot"></span><b>+4 Energy</b><span>helder & levendig</span></div>
+                <div class="stat"><span class="dot"></span><b>+2 Focus</b><span>friszuur profiel</span></div>
+                <div class="stat"><span class="dot"></span><b>+1 Strength</b><span>meer karakter</span></div>
+              </div>
+              <div class="health-note">RPG-stats zijn puur merkbeleving, geen gezondheidsclaims.</div>
+            </div>
+          </article>
+
+          <article class="flavour-card midnight">
+            <div class="art">
+              <div class="mini-witch">
+                <div class="hat"></div><div class="hair" style="border-color:#2b2044;border-bottom-color:#5c3681"></div>
+                <div class="head"><span class="face-eye eye1"></span><span class="face-eye eye2"></span><span class="smile"></span></div>
+                <div class="cloak" style="background:linear-gradient(145deg,#171321,#4a2b68)"></div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="class-tag">The Warlock</div>
+              <h3>Midnight Hex</h3>
+              <div class="ing">Braam · Zwarte bes · Citroen</div>
+              <div class="stats">
+                <div class="stat"><span class="dot"></span><b>+3 Creativity</b><span>donker fruitig</span></div>
+                <div class="stat"><span class="dot"></span><b>+2 Calm</b><span>zachte afdronk</span></div>
+                <div class="stat"><span class="dot"></span><b>+1 Mystery</b><span>frisse citrustoets</span></div>
+              </div>
+              <div class="health-note">RPG-stats zijn puur merkbeleving, geen gezondheidsclaims.</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="new-banner">
+          <div class="copy">
+            <div class="eyebrow">Newest potion</div>
+            <h2>CRIMSON MOON</h2>
+            <p>Framboos, hibiscus en bloedsinaasappel. Een frissere brew met een lichtzure toets en een dieper fruitprofiel.</p>
+            <div class="actions"><a class="btn" href="#mission">EXPLORE THIS FLAVOUR →</a></div>
+          </div>
+          <div class="banner-art">
+            <div class="moon"></div>
+            <div class="castle"></div>
+            <div class="banner-can">
+              <div class="can crimson">
+                <div class="inner-label">
+                  <div class="mark">☾</div>
+                  <div class="brand-txt">WITCH'S BREW</div>
+                  <div class="name">CRIMSON<br>MOON</div>
+                  <div class="micro">Framboos · Hibiscus · Bloedsinaasappel</div>
+                  <div class="sugar">LOW SUGAR</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="community" class="dashboard">
+          <section class="panel">
+            <div class="panel-head"><h3>✦ YOUR ACCOUNT</h3><a href="#">VIEW REWARDS →</a></div>
+            <div class="account-row">
+              <div class="bigavatar">✦</div>
+              <div class="account-meta"><strong>Luna</strong><span>Level 12</span></div>
+            </div>
+            <div class="xp">
+              <div class="xp-line"><span>Progress</span><span>420 / 1,000 EXP</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><h3>✦ COVEN FRIENDS</h3><a href="#">+ ADD FRIENDS</a></div>
+            <div class="friend"><span class="favatar"></span><div><b>Nova 👑</b><small>Level 18 · 1,250 EXP</small></div><span class="rank">•••</span></div>
+            <div class="friend"><span class="favatar" style="background:linear-gradient(145deg,#5ec9ff,#263d82)"></span><div><b>Selene</b><small>Level 16 · 980 EXP</small></div><span class="rank">•••</span></div>
+            <div class="friend"><span class="favatar" style="background:linear-gradient(145deg,#b379ff,#47306c)"></span><div><b>Ezra</b><small>Level 14 · 760 EXP</small></div><span class="rank">•••</span></div>
+            <div class="friend"><span class="favatar" style="background:linear-gradient(145deg,#ff8bc7,#7b324d)"></span><div><b>Kaida</b><small>Level 11 · 540 EXP</small></div><span class="rank">•••</span></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><h3>✦ EXP LEADERBOARD</h3><a href="#">THIS MONTH</a></div>
+            <div class="leader">
+              <div class="leader-row"><span class="rank">1</span><div><strong>Nova 👑</strong><div class="leaderbar"><i style="width:88%"></i></div></div><span class="mini">1,250 EXP</span></div>
+              <div class="leader-row"><span class="rank">2</span><div><strong>Selene</strong><div class="leaderbar"><i style="width:70%"></i></div></div><span class="mini">980 EXP</span></div>
+              <div class="leader-row"><span class="rank">3</span><div><strong>Ezra</strong><div class="leaderbar"><i style="width:56%"></i></div></div><span class="mini">760 EXP</span></div>
+              <div class="leader-row"><span class="rank">4</span><div><strong>Luna</strong><div class="leaderbar"><i style="width:42%"></i></div></div><span class="mini">420 EXP</span></div>
+            </div>
+          </section>
+        </div>
+
+        <section id="mission" class="mission">
+          <div>
+            <div class="eyebrow">Waarom Witch's Brew?</div>
+            <div class="quote">Een betere keuze moet ook gewoon beschikbaar zijn.</div>
+          </div>
+          <div>
+            <h2>Magie voor het merk. Helderheid voor het product.</h2>
+            <p>Witch's Brew wil een aantrekkelijke, bruisende en suikerarme frisdranklijn ontwikkelen die naast klassieke frisdranken kan staan in cafés, automaten, kantines en winkels. De fantasywereld maakt het merk herkenbaar; de productinformatie blijft eenvoudig en transparant.</p>
+            <p>De uiteindelijke recepturen, nutritionele waarden en eventuele vitamine- of mineralentoevoegingen zijn nog in ontwikkeling. Op toekomstige verpakkingen gebruiken we alleen claims die door de finale formule worden ondersteund.</p>
+            <div class="disclaimer">Conceptwebsite · alle RPG-statistieken en EXP-elementen zijn fictieve gamification en geen medische, nutritionele of functionele claims.</div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div><strong>Witch's Brew</strong> · Concept 2026</div>
+      <div>Magisch van smaak. Bewuster gekozen.</div>
+    </div>
+  </footer>
+</body>
+</html>
