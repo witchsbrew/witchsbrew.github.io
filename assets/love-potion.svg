@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Stylized Love Potion special edition witch illustration">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#190c17"/><stop offset=".53" stop-color="#61234e"/><stop offset="1" stop-color="#1b0c19"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#ffd4e9"/><stop offset=".58" stop-color="#ff83c0"/><stop offset="1" stop-color="#a43178"/></radialGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f6d0bc"/><stop offset="1" stop-color="#d99a8e"/></linearGradient>
+ <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d18a67"/><stop offset=".5" stop-color="#9f5d54"/><stop offset="1" stop-color="#6d3a47"/></linearGradient>
+</defs>
+<rect width="1200" height="800" rx="42" fill="url(#bg)"/>
+<circle cx="910" cy="185" r="120" fill="url(#glow)" opacity=".86"/>
+<g fill="#ffd0e8" opacity=".75"><path d="M1017 118 c-18 -24 -52 2 -30 26 l30 30 30 -30 c22 -24 -12 -50 -30 -26z"/><path d="M1050 292 c-12 -17 -36 1 -20 18 l20 21 20 -21 c16 -17 -8 -35 -20 -18z"/></g>
+<!-- romantic waves -->
+<path d="M399 185 C306 285 339 422 386 521 C420 593 391 695 319 772 C453 724 586 722 703 780 C657 684 678 579 713 487 C754 376 693 238 578 186 Z" fill="url(#hair)"/>
+<!-- tilted heart-shaped face -->
+<g transform="rotate(-7 515 358)"><path d="M428 262 C479 213 560 218 609 269 C647 309 647 383 614 435 C584 484 529 515 486 490 C438 461 403 407 407 347 C410 307 417 278 428 262 Z" fill="url(#skin)" stroke="#9e5b62" stroke-width="3"/>
+<path d="M427 292 q33 -20 66 -4 M523 287 q35 -18 69 5" fill="none" stroke="#6d414c" stroke-width="7" stroke-linecap="round"/>
+<ellipse cx="462" cy="321" rx="12" ry="8" fill="#302028"/><ellipse cx="557" cy="318" rx="12" ry="8" fill="#302028"/>
+<path d="M512 333 l-4 41 12 4" fill="none" stroke="#bc7c70" stroke-width="4"/>
+<path d="M472 421 q43 31 92 -2" fill="none" stroke="#b84f70" stroke-width="7" stroke-linecap="round"/></g>
+<!-- glossy hair lines -->
+<path d="M408 245 C343 376 390 530 348 662 M583 197 C700 304 702 455 649 618 M461 199 C396 330 442 496 405 651" fill="none" stroke="#75404d" stroke-width="18" stroke-linecap="round" opacity=".7"/>
+<!-- small fashion hat -->
+<ellipse cx="518" cy="205" rx="145" ry="46" fill="#4b183e" stroke="#e7aa67" stroke-width="4" transform="rotate(-8 518 205)"/>
+<path d="M459 190 C487 126 536 93 592 76 C572 131 581 162 626 210 C566 194 509 188 459 190 Z" fill="#5f1d4d" stroke="#e7aa67" stroke-width="4"/>
+<g fill="#ffd0e8" stroke="#e7aa67" stroke-width="2"><circle cx="601" cy="169" r="18"/><circle cx="625" cy="183" r="14"/><circle cx="584" cy="187" r="13"/></g>
+<!-- pearls -->
+<g fill="#ffe6ef"><circle cx="423" cy="510" r="8"/><circle cx="443" cy="520" r="8"/><circle cx="465" cy="527" r="8"/><circle cx="489" cy="531" r="8"/><circle cx="514" cy="532" r="8"/><circle cx="539" cy="529" r="8"/><circle cx="562" cy="522" r="8"/></g>
+<!-- dress/cloak -->
+<path d="M343 508 C433 470 584 473 674 522 L794 800 H214 L320 545 Z" fill="#542044" stroke="#b34d83" stroke-width="4"/>
+<path d="M381 564 C481 625 590 619 659 558" fill="none" stroke="#f0bd80" stroke-width="4" opacity=".6"/>
+<!-- heart bottle -->
+<g transform="translate(815 450)"><path d="M0 74 C0 22 68 10 82 56 C96 10 164 22 164 74 C164 126 82 176 82 176 C82 176 0 126 0 74 Z" fill="#ff75b5" fill-opacity=".42" stroke="#ffd0e8" stroke-width="5"/><rect x="64" y="-2" width="36" height="52" rx="9" fill="#9d6c4a"/></g>
+
+<defs><filter id="texture" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/><feColorMatrix in="noise" type="saturate" values="0" result="mono"/><feComponentTransfer in="mono"><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter></defs>
+<rect x="10" y="10" width="1180" height="780" rx="34" fill="none" stroke="#e9ba73" stroke-opacity=".46" stroke-width="3"/>
+<rect x="0" y="0" width="1200" height="800" fill="#ffffff" opacity=".045" filter="url(#texture)" style="mix-blend-mode:soft-light"/>
+<g fill="#f6ddb0" opacity=".55"><circle cx="78" cy="82" r="3"/><circle cx="1120" cy="112" r="3"/><circle cx="1076" cy="706" r="2.5"/><circle cx="116" cy="698" r="2.5"/></g>
+</svg>
