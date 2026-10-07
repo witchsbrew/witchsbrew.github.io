@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Stylized Crimson Moon witch illustration">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#160b12"/><stop offset=".55" stop-color="#4b101d"/><stop offset="1" stop-color="#170c18"/></linearGradient>
+ <radialGradient id="moon"><stop stop-color="#ffd7c4"/><stop offset=".55" stop-color="#d85d69"/><stop offset="1" stop-color="#6d1c2e"/></radialGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0c6ab"/><stop offset="1" stop-color="#c98779"/></linearGradient>
+ <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#25131b"/><stop offset=".55" stop-color="#09090d"/><stop offset="1" stop-color="#4b1423"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<rect width="1200" height="800" rx="42" fill="url(#bg)"/>
+<circle cx="880" cy="190" r="118" fill="url(#moon)" opacity=".92"/>
+<circle cx="880" cy="190" r="138" fill="none" stroke="#f1b15e" stroke-opacity=".42" stroke-width="3"/>
+<g opacity=".6" fill="#ffd58c"><circle cx="1020" cy="106" r="3"/><circle cx="1070" cy="240" r="2"/><circle cx="815" cy="70" r="2"/><circle cx="980" cy="330" r="2"/></g>
+<!-- thorn crescent -->
+<path d="M150 660 C280 500 320 330 254 168" fill="none" stroke="#8f2336" stroke-width="12" stroke-linecap="round"/>
+<g fill="#c44759" stroke="#5d1220" stroke-width="4"><path d="M213 450 l-32 -32 40 8z"/><path d="M244 350 l-36 -22 40 -2z"/><path d="M258 246 l-30 -30 36 8z"/></g>
+<g fill="#a92742"><circle cx="175" cy="570" r="42"/><circle cx="214" cy="531" r="34"/><circle cx="223" cy="593" r="28"/></g>
+<!-- hair mass -->
+<path d="M463 163 C368 222 347 342 367 480 C382 584 341 662 272 728 C438 714 563 708 667 720 C608 630 614 533 635 444 C664 319 613 203 524 160 Z" fill="url(#hair)"/>
+<!-- face 3/4 -->
+<path d="M482 229 C548 214 596 258 601 333 C605 410 566 492 499 501 C445 508 405 452 411 368 C416 296 438 241 482 229 Z" fill="url(#skin)" stroke="#6a2a2e" stroke-width="3"/>
+<path d="M426 292 C454 244 522 222 581 253 C549 211 463 198 417 247 Z" fill="#100b10"/>
+<!-- angular features -->
+<path d="M448 336 q31 -18 64 0" fill="none" stroke="#4a2026" stroke-width="8" stroke-linecap="round"/>
+<path d="M525 329 q30 -16 54 4" fill="none" stroke="#4a2026" stroke-width="7" stroke-linecap="round"/>
+<ellipse cx="480" cy="350" rx="10" ry="7" fill="#221016"/><ellipse cx="550" cy="347" rx="10" ry="7" fill="#221016"/>
+<path d="M520 357 l-9 45 17 3" fill="none" stroke="#b86f69" stroke-width="4"/>
+<path d="M483 432 q35 19 72 -3" fill="none" stroke="#8d3040" stroke-width="6" stroke-linecap="round"/>
+<!-- sleek hair strands -->
+<path d="M409 272 C365 390 388 564 319 680 M581 258 C650 398 609 550 648 691 M435 227 C390 378 409 520 380 664" fill="none" stroke="#0a090d" stroke-width="22" stroke-linecap="round"/>
+<!-- hat -->
+<path d="M348 222 C478 179 610 188 700 243 C618 271 484 285 345 257 Z" fill="#1b1018" stroke="#d59d58" stroke-width="4"/>
+<path d="M448 202 C490 106 557 54 624 20 C591 103 601 151 667 226 C587 214 514 210 448 202 Z" fill="#22101a" stroke="#d59d58" stroke-width="4"/>
+<!-- roses on hat -->
+<g fill="#b12b45" stroke="#f2a09b" stroke-opacity=".35" stroke-width="3"><circle cx="625" cy="184" r="29"/><circle cx="661" cy="197" r="24"/><circle cx="600" cy="205" r="21"/></g>
+<!-- cloak -->
+<path d="M354 500 C427 470 561 470 650 512 L790 800 H212 L335 540 Z" fill="#250c14" stroke="#9f3947" stroke-width="4"/>
+<path d="M390 540 C495 610 584 608 652 538" fill="none" stroke="#d7a15e" stroke-width="4" opacity=".65"/>
+<!-- crimson magic -->
+<path d="M716 612 C792 522 824 420 786 340 C868 414 847 551 760 652 Z" fill="#d12b48" opacity=".22" filter="url(#glow)"/>
+
+<defs><filter id="texture" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/><feColorMatrix in="noise" type="saturate" values="0" result="mono"/><feComponentTransfer in="mono"><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter></defs>
+<rect x="10" y="10" width="1180" height="780" rx="34" fill="none" stroke="#e9ba73" stroke-opacity=".46" stroke-width="3"/>
+<rect x="0" y="0" width="1200" height="800" fill="#ffffff" opacity=".045" filter="url(#texture)" style="mix-blend-mode:soft-light"/>
+<g fill="#f6ddb0" opacity=".55"><circle cx="78" cy="82" r="3"/><circle cx="1120" cy="112" r="3"/><circle cx="1076" cy="706" r="2.5"/><circle cx="116" cy="698" r="2.5"/></g>
+</svg>
